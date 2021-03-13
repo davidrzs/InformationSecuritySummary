@@ -1,0 +1,274 @@
+\documentclass[25pt]{sciposter}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsthm}
+
+\usepackage[dvipsnames,usenames,svgnames,table]{xcolor} 
+\usepackage{lipsum}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\usepackage{gensymb}
+\usepackage{tocloft}
+\usepackage{empheq}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=11cm,compat=1.9}
+
+
+% for nice tableas
+\usepackage{booktabs}
+
+\graphicspath{ {img/} }
+
+\geometry{
+	landscape,
+	a1paper,
+	left=5mm,
+	right=50mm,
+	top=5mm,
+	bottom=50mm,
+}
+\usepackage{array}   % for \newcolumntype macro
+\newcolumntype{L}{>{$}m{5.5cm}<{$}} % math-mode version of "l" column type
+
+%BEGIN LISTINGDEF
+
+
+\newtheorem*{lem}{Lemma}
+
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+\newcommand{\limm}{\lim\limits_{n \to \infty}}
+\newcommand{\limx}[1]{\lim\limits_{x \to #1}}
+\newlength\dlf  % Define a new measure, dlf
+\newcommand\alignedbox[2]{
+	% Argument #1 = before & if there were no box (lhs)
+	% Argument #2 = after & if there were no box (rhs)
+	&  % Alignment sign of the line
+	{
+		\settowidth\dlf{$\displaystyle #1$}
+		% The width of \dlf is the width of the lhs, with a displaystyle font
+		\addtolength\dlf{\fboxsep+\fboxrule}
+		% Add to it the distance to the box, and the width of the line of the box
+		\hspace{-\dlf}
+		% Move everything dlf units to the left, so that & #1 #2 is aligned under #1 & #2
+		\boxed{#1 #2}
+		% Put a box around lhs and rhs
+	}
+}
+\usepackage{graphicx,url}
+
+%BEGIN TITLE
+\title{\huge{Information Security}}
+
+\author{\large{David Zollikofer}}
+%END TITLE
+
+
+%\usepackage{eulervm}
+\usepackage{mathpazo}
+% begin custom commands
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\Nor}{\mathcal{N}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\E}{\operatorname{E}}
+%\newcommand{\exp}{\operatorname{exp}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\mc}{\mathcal}
+
+% some shortcuts
+\newcommand{\ds}{\displaystyle}
+\newcommand{\arr}{\rightarrow}
+\newcommand{\nop}[1]{}
+\renewcommand{\hat}{\widehat}
+
+% stuff for integrals
+\newcommand{\intl}{\int\limits}
+\newcommand{\rmd}{\mathrm{d}}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\usepackage[framemethod=latex]{mdframed}
+\newenvironment{defn}[1]{\begin{mdframed}[backgroundcolor=blue!10,innertopmargin=15pt, nobreak=true,innerbottommargin=15pt]
+		\textbf{#1 }
+	}
+	{ 
+	\end{mdframed}
+}
+
+\newenvironment{important}{\begin{mdframed}[backgroundcolor=red!50,innertopmargin=15pt, innerbottommargin=15pt, nobreak=true]
+		\Large
+	}
+	{ 
+	\end{mdframed}
+}
+
+\newenvironment{lemma}{\begin{mdframed}[backgroundcolor=gray!50,innertopmargin=15pt, innerbottommargin=15pt, nobreak=true]
+		\Large
+	}
+	{ 
+	\end{mdframed}
+}
+
+\newenvironment{thm}[1]{\begin{mdframed}[nobreak=true,backgroundcolor=Emerald!10,innertopmargin=15pt, innerbottommargin=15pt]
+		\textbf{#1 }
+	}
+	{ 
+	\end{mdframed}
+}
+
+
+
+\newenvironment{trick}[1]{\begin{mdframed}[backgroundcolor=PineGreen!50,innertopmargin=15pt, innerbottommargin=15pt, nobreak=true]
+		\textbf{#1 }
+	}
+	{ 
+	\end{mdframed}
+}
+
+
+\usepackage{todonotes}
+\newcommand{\TODO}[1]{\todo[inline]{\Large TODO:  #1}}
+
+
+
+
+
+\DeclarePairedDelimiter\abs{\left|}{\right|}%
+
+
+
+\setlength\abovedisplayskip{0pt}
+
+\renewcommand{\familydefault}{\rmdefault}
+
+% end custom commands
+
+\begin{document}
+	
+	
+	
+	
+	
+	\maketitle
+	
+	
+	
+	\begin{multicols}{3}
+		
+		
+		
+		\textit{This summary provides a high level overview over most topics covered in the lecture Information Security taught at ETH Zürich by Prof .......}
+		
+		\part{Introduction to Cryptography}
+		\section{Entropie}
+		
+	
+		
+		\begin{defn}{Entropie einer Zufallsvariable}
+			Sei $X:\Omega \to \mathcal{X}$ mit Verteilung $P_X$ so dass $H(X) = H(P_X)$ so gilt
+			
+			\begin{align*}
+				H(X) := - \sum_x P_X(x) \log P_X(x)
+			\end{align*}
+		\end{defn}
+		
+	
+		
+		\begin{thm}{Kettenregel}
+			Für jedes Paar an Zufallsvariablen $X,Y$ gilt
+			\begin{align*}
+				H(X|Y) + H(Y) = H(X,Y) = H(Y|X) + H(X)
+			\end{align*}
+		\end{thm}
+		
+		\begin{thm}{Erweiterte Kettenregel}
+			Es gilt durch mehrfaches anwenden der Kettenregel, dass
+			
+			\begin{align*}
+				H(X_1,\ldots,X_n) &= H(X_1) + \sum_{i=2}^{n} H(X_i | X_1,\ldots X_{i-1})
+			\end{align*}
+			
+			Ausgeschrieben wäre dies:
+			$$H(X,Y,Z) = H(X) + H(Y|X) + H(Z|X,Y)$$
+		\end{thm}
+		
+		
+		\begin{defn}{Wechselseitige Information}
+			Wir definieren 
+			
+			\begin{align*}
+				I(X;Y) = H(X) - H(X|Y)
+			\end{align*}
+			
+			als die Reduktion der Unsicherheit über $X$ durch Bekanntwerden von $Y$.
+			
+			Aufgrund der Kettenregel gilt
+			
+			\begin{align*}
+				I(X;Y) &= H(X) + H(Y) - H(X,Y) = I(Y;X)
+			\end{align*}
+			
+		\end{defn}
+		
+		
+		\begin{thm}{Satz zur wechselseitigen Information}
+			Für alle $X,Y$ gilt $I(X;Y)\geq 0$ mit Gleichheit wenn $X,Y$ unabhängig sind.	
+		\end{thm}
+		
+		
+		\begin{defn}{Kullback-Leibler-Divergenz}
+			Die Kullback-Leibler-Divergenz zwischen zwei Zufallsvariablen $P,Q$ ist definiert durch
+			
+			\begin{align*}
+				D_{KL} (P||Q) = -\sum_{\omega}P(\omega) \log\left( \frac{Q(\omega)}{P(\omega)} \right) = \E \left[\log\frac{P}{Q}\right]
+			\end{align*}
+		\end{defn}
+		
+		\begin{thm}{Gibbs Ungleichung}
+			Es gilt $D_{KL}(P||Q)\geq 0 $ mit Gleichheit genau dann wenn $P=Q$.
+		\end{thm}
+		
+		
+		\begin{figure}
+			\centering
+			\ifx
+			\includegraphics[width=1\linewidth]{overviewChpt1}
+			\caption{Übersicht der relevanten Grössen}
+			\label{fig:overviewchpt1} \fi
+		\end{figure}
+		\begin{defn}{Bedingte Gegenseitige Information}
+			Die bedingte Gegenseitige Information, die $X$ über $Y$ gibt, gegeben $Z$ ist 
+			
+			\begin{align*}
+				I(X;Y|Z) &= H(XZ) + H(YZ)- H(XYZ) - H(Z)
+			\end{align*}
+			
+			Am besten erklärt man sich dies Intuitiv durch die Regel $I(X;Y) = H(X) + H(Y) - H(XY)$ wobei man immer auf $Z$ bedingt und dann auflöst.
+			
+		\end{defn}
+	
+		\begin{defn}
+			This is a definition here\varepsilon \varepsilon \varepsilon \varepsilon \varepsilon \varepsilon \varepsilon \varepsilon \varepsilon \varepsilon \mu \mu \mu \lambda \rho \varpi \pi o \tau \upsilon 
+		\end{defn}
+		
+		\newpage
+		
+	\end{multicols}
+\end{document}
